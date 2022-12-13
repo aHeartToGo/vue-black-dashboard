@@ -10,6 +10,7 @@ const Icons = () => import(/* webpackChunkName: "common" */ "@/pages/Icons.vue")
 const Maps = () => import(/* webpackChunkName: "common" */ "@/pages/Maps.vue");
 const Typography = () => import(/* webpackChunkName: "common" */ "@/pages/Typography.vue");
 const TableList = () => import(/* webpackChunkName: "common" */ "@/pages/TableList.vue");
+const Nft = () => import(/* webpackChunkName: "common" */ "@/pages/Nft.vue");
 
 const routes = [
   {
@@ -51,6 +52,11 @@ const routes = [
         path: "table-list",
         name: "table-list",
         component: TableList
+      },
+      {
+        path: "nft",
+        name: "nft",
+        component: Nft
       }
     ]
   },
