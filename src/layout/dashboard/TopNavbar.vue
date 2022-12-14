@@ -91,8 +91,11 @@
                 <a href="#" class="nav-item dropdown-item">Settings</a>
               </li>
               <div class="dropdown-divider"></div>
-              <li class="nav-link">
-                <a href="#" class="nav-item dropdown-item">Log out</a>
+              <li class="nav-link" v-show="!connected">
+                <a href="#" class="nav-item dropdown-item" @click="connect">connect</a>
+              </li>
+              <li class="nav-link" v-show="connected">
+                <a href="#" class="nav-item dropdown-item" @click="logout">logout</a>
               </li>
             </base-dropdown>
           </ul>
@@ -124,7 +127,8 @@
         activeNotifications: false,
         showMenu: false,
         searchModalVisible: false,
-        searchQuery: ''
+        searchQuery: '',
+        connected: false
       };
     },
     methods: {
@@ -145,6 +149,22 @@
       },
       toggleMenu() {
         this.showMenu = !this.showMenu;
+      },
+
+      //connect metamask
+      connect(){
+        if (window.ethereum) {
+          // first we check if metamask is installed
+          window.ethereum.request({ method: 'eth_requestAccounts' })
+            .then(() => {
+              this.connected = true; // If users successfully connected their wallet
+
+              //save account address
+            });
+        }
+      },
+      logout(){
+
       }
     }
   };
